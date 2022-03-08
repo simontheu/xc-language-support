@@ -2,18 +2,46 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "xc",
 	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
+		{"include": "#keywords"},
+		{"include": "#strings"},
+		{"include": "#xmos"},
+		{"include": "#comments"},
+		{	"name" : "meta.preprocessor.c.include",
+			"begin" : "^\\s*#\\s*(include|import|define|if|ifndef|ifdef|else|endif)\\b",
+			"end" : "(?=(?://|/\\*))|$",
+			"captures" : { "1" : { "name" : "keyword.control.import.include.xc" } },
+			"patterns" : [
+				{	"name" : "punctuation.separator.continuation.xc",
+					"match" : "(?>\\\\s*\n)"
+				},
+				{	"name" : "string.quoted.double.include.xc",
+					"begin" : "\"",
+					"end" : "\"",
+					"beginCaptures" : { "0" : { "name" : "punctuation.definition.string.begin.xc" } },
+					"endCaptures" : { "0" : { "name" : "punctuation.definition.string.end.xc" } }
+				},
+				{	"name" : "string.quoted.other.lt-gt.include.xc",
+					"begin" : "<",
+					"end" : ">",
+					"beginCaptures" : { "0" : { "name" : "punctuation.definition.string.begin.xc" } },
+					"endCaptures" : { "0" : { "name" : "punctuation.definition.string.end.xc" } }
+				}
+			]},
+		{	"name": "storage.type.xc",
+			"match": "\\b(asm|__asm__|auto|bool|_Bool|char|_Complex|double|enum|float|_Imaginary|int|long|short|signed|struct|typedef|union|unsigned|void|uint8_t|int8_t|uint16_t|int16_t|uint32_t|int32_t)\\b"
 		}
-	],
+		],
 	"repository": {
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.xc",
-				"match": "\\b(if|while|for|return)\\b"
+				"match": "\\b(if|else|while|for|return)\\b"
+			}]
+		},
+		"xmos": {
+			"patterns": [{
+				"name": "keyword.other.xc",
+				"match": "\\b(port|combinable|tile|on|out|in|buffered|client|master|par|unsafe)\\b"
 			}]
 		},
 		"strings": {
@@ -26,7 +54,42 @@
 					"match": "\\\\."
 				}
 			]
+		},"comments" : {
+			"patterns" : [
+				{	"name" : "comment.block.xc",
+					"match" : "^/\\* =(\\s*.*?)\\s*= \\*/$\\n?",
+					"captures" : { "1" : { "name" : "meta.toc-list.banner.block.xc" } }
+				},
+				{	"name" : "comment.block.xc",
+					"begin" : "/\\*",
+					"end" : "\\*/",
+					"beginCaptures" : { "0" : { "name" : "punctuation.definition.comment.begin.xc" } },
+					"endCaptures" : { "0" : { "name" : "punctuation.definition.comment.end.xc" } }
+				},
+				{	"name" : "invalid.illegal.stray-comment-end.xc",
+					"match" : "\\*/.*\n"
+				},
+				{	"name" : "comment.line.banner.xc",
+					"match" : "^// =(\\s*.*?)\\s*=\\s*$\n?",
+					"captures" : { "1" : { "name" : "meta.toc-list.banner.line.xc" } }
+				},
+				{	"begin" : "(^[ \t]+)?(?=//)",
+					"end" : "(?!\\G)",
+					"beginCaptures" : { "1" : { "name" : "punctuation.whitespace.comment.leading.xc" } },
+					"patterns" : [
+						{	"name" : "comment.line.double-slash.xc",
+							"begin" : "//",
+							"end" : "\\n",
+							"beginCaptures" : { "0" : { "name" : "punctuation.definition.comment.xc" } },
+							"patterns" : [
+								{	"name" : "punctuation.separator.continuation.xc",
+									"match" : "(?>\\\\s*\\n)"
+								}
+							]
+						}
+					]
+				}
+			]
 		}
-	},
-	"scopeName": "source.xc"
+	}, "scopeName": "source.xc"
 }
