@@ -1,0 +1,25 @@
+{
+    "name": "xc-code-highlighting",
+    "displayName": "xc code highlighting",
+    "description": "Syntax highlighting for xmos .xc files",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.65.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "xc",
+            "aliases": ["xc", "xc"],
+            "extensions": [".xc"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "xc",
+            "scopeName": "source.xc",
+            "path": "./syntaxes/xc.tmLanguage.json"
+        }]
+    }
+}
