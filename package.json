@@ -2,7 +2,7 @@
     "name": "xc-code-highlighting",
     "displayName": "xc code highlighting",
     "description": "Syntax highlighting for xmos .xc files",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "engines": {
         "vscode": "^1.65.0"
     },

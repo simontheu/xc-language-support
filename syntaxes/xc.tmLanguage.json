@@ -35,13 +35,16 @@
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.xc",
-				"match": "\\b(if|else|while|for|return)\\b"
+				"match": "\\b(if|else|while|for|return|select|case|break|switch|default)\\b"
+			},{
+				"name": "keyword.function.xc",
+				"match": "\\b(memcpy|strcpy)\\b"
 			}]
 		},
 		"xmos": {
 			"patterns": [{
 				"name": "keyword.other.xc",
-				"match": "\\b(port|combinable|tile|on|out|in|buffered|client|master|par|unsafe)\\b"
+				"match": "\\b(port|combinable|tile|on|out|in|buffered|client|server|master|par|unsafe)\\b"
 			}]
 		},
 		"strings": {

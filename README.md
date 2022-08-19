@@ -1,43 +1,28 @@
 # xc-code-highlighting README
 
-This is the README for your extension "xc-code-highlighting". After writing up a brief description, we recommend including the following sections.
+This extension allows code highlighting of XMOS .xc files. XMOS is a multitasking MCU family suitable for realtime task.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Shows all XMOS keywords to allow easy reading and editing of .xc files. There is a lot of common grammar with TextMate's 'C' language files.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+No know dependencies.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+No settings.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+All syntax features are not present at the moment.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial version with code and XMOS features highlighted.
+Initial version with code and XMOS feature keywords highlighted.
 
 -----------------------------------------------------------------------------------------------------------
 
